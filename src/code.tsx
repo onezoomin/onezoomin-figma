@@ -1,6 +1,7 @@
 import PNG from 'png-ts'
 
-figma.showUI(__html__)
+// TODO find  .pagesPanel and set x to dock in top left of actual page
+figma.showUI(__html__, { width: 400, height: 700 })
 
 const baseImageFill = {
   blendMode: 'NORMAL',
@@ -21,6 +22,23 @@ const baseImageFill = {
   scalingFactor: 0.5,
   type: 'IMAGE',
   visible: true,
+}
+function ungroup (group: GroupNode) {
+  const p = group.parent
+  group.children.forEach((node, i) => {
+    p?.insertChild(i, node)
+  })
+}
+// Finds all  frame nodes
+async function init () {
+  const nodes = figma.currentPage.children
+  // create temp group to get extents
+  const newGroup = figma.group(nodes, figma.currentPage)
+  const { x, y, width, height } = newGroup
+  const bot = height + y; const right = width + x; const extents = { x, y, width, height, right, bot }
+  console.log(extents)
+  ungroup(newGroup)
+  figma.ui.postMessage(extents)
 }
 // Finds all  frame nodes
 async function fractalize () {
@@ -49,6 +67,8 @@ async function fractalize () {
 // posted message.
 figma.ui.onmessage = async msg => {
   if (msg.type === 'fractal') fractalize()
+  if (msg.type === 'cancel') figma.closePlugin()
+  if (msg.type === 'init') init()
 
   // Move the letter so that the center of its baseline is on the origin.
   // (estimate the baseline as being 70% down from the top of the box).
@@ -94,9 +114,9 @@ figma.ui.onmessage = async msg => {
     frame.fills = []
     figma.currentPage.selection = [frame]
     figma.viewport.scrollAndZoomIntoView(nodes)
-  }
 
-  // Make sure to close the plugin when you're done. Otherwise the plugin will
-  // keep running, which shows the cancel button at the bottom of the screen.
-  figma.closePlugin()
+    // Make sure to close the plugin when you're done. Otherwise the plugin will
+    // keep running, which shows the cancel button at the bottom of the screen.
+    figma.closePlugin()
+  }
 }
