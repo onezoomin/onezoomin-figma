@@ -1,0 +1,54 @@
+{
+  "name": "react-figma-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate app for react-figma",
+  "main": "./src/code.tsx",
+  "scripts": {
+    "webpack:watch": "webpack --watch"
+  },
+  "keywords": [
+    "react",
+    "react-figma",
+    "react-figma-boilerplate",
+    "figma",
+    "figma-plugins"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/react-figma/react-figma-boilerplate.git"
+  },
+  "author": "Yaroslav Losev <losevyaroslav@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@figma/plugin-typings": "^1.16.1",
+    "png-ts": "^0.0.3",
+    "preact": "^10.5.14",
+    "webpack-merge": "^5.8.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.28.1",
+    "@typescript-eslint/parser": "^4.28.1",
+    "autoprefixer": "^10.2.6",
+    "css-loader": "^4",
+    "eslint": "^7.30.0",
+    "eslint-config-preact": "^1.1.4",
+    "eslint-config-standard": "latest",
+    "eslint-config-standard-with-typescript": "^20.0.0",
+    "eslint-plugin": "^1.0.1",
+    "eslint-plugin-import": "2",
+    "eslint-plugin-node": "11",
+    "eslint-plugin-promise": "4",
+    "figma-plugin-ds": "^1.0.1",
+    "html-webpack-inline-source-plugin": "^0.0.10",
+    "html-webpack-plugin": "^3.2.0",
+    "postcss": "^8.3.5",
+    "postcss-loader": "^4",
+    "style-loader": "^2",
+    "tailwindcss": "^2.2.4",
+    "ts-loader": "^6.0.4",
+    "typescript": "^4.2",
+    "typescript-eslint": "^0.0.1-alpha.0",
+    "webpack": "^4",
+    "webpack-cli": "^3.3.7"
+  }
+}
