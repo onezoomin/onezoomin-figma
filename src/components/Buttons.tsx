@@ -1,17 +1,19 @@
 import { h } from 'preact'
-import { appendClassNames } from './utils'
+import { appendClassNames } from '../utils'
 
 const onCreate = (/* ev: MouseEvent */) => {
   const textbox = document.getElementById('amount')
   const count = parseInt((textbox as HTMLInputElement).value, 10)
-  parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*')
+  // const params = JSON.stringify({ count })
+  const params = { count }
+  parent.postMessage({ pluginMessage: { cmd: 'createRectangles', params } }, '*')
 }
 const onFractal = () => {
-  parent.postMessage({ pluginMessage: { type: 'fractal' } }, '*')
+  parent.postMessage({ pluginMessage: { cmd: 'fractal' } }, '*')
 }
 
 const onCancel = () => {
-  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
+  parent.postMessage({ pluginMessage: { cmd: 'cancel' } }, '*')
 }
 
 export const Button = ({ children = '', className = '', ...restProps }) => {

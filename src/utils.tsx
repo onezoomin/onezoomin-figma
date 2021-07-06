@@ -19,3 +19,10 @@ export const hasScrollOverflowY = (elem: HTMLElement|undefined) => {
   console.debug('hasScrollOverflowY', elem?.scrollHeight, elem?.clientHeight)
   return !!elem && elem.scrollHeight > elem.clientHeight
 }
+
+export const ungroup = (group: GroupNode) => {
+  const p = group.parent
+  group.children.forEach((node, i) => {
+    p?.insertChild(i, node)
+  })
+}

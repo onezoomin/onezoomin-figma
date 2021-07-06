@@ -3632,6 +3632,11 @@ object.values@^1.1.3, object.values@^1.1.4:
     define-properties "^1.1.3"
     es-abstract "^1.18.2"
 
+objectmodel@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/objectmodel/-/objectmodel-4.3.0.tgz#e6e9084cf71dc54461a2c0d7b2dee1528bcbc236"
+  integrity sha512-YTIsWLslHgFrhjY+ANcv8AlX5neSojNV9HxA6hf01NdFJcSEz3pykPGa7wcMUx6mxYnaJ6tNz9oQOz8NtzrdKQ==
+
 once@^1.3.0, once@^1.3.1, once@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/once/-/once-1.4.0.tgz#583b1aa775961d4b113ac17d9c50baef9dd76bd1"
